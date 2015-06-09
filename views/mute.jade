@@ -1,0 +1,25 @@
+extends layout
+
+block content
+    h1 #{title}
+    p mute user during specific time duration. (maximum : 24 hours)
+    p(style='color:red; font-weight:bold;') #{mutemsg}
+    div
+        form(method="post", action="./mute")
+            input(type="text", name="username", placeholder="User ID", style="display:block;")
+            input(type="number", name="second", placeholder="Seconds", style="display:block;")
+            input(type="number", name="minute", placeholder="Minutes", style="display:block;")
+            input(type="number", name="hour", placeholder="Hours", style="display:block;")
+            input(type="submit", value="mute", style="display:block;")
+    div
+        unless mutelist === undefined
+            h2 current timed mute status
+            //div #{typeof(mutelist)}
+            div
+                ul
+                    each val, index in mutelist
+                        li= val.name + ' (@' + val.screen_name + '), '
+    script(type="text/javascript").
+        setTimeout(function () {
+            window.location = window.location.href;
+        }, #{refresh}*1000+1000);

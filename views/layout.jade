@@ -1,0 +1,20 @@
+doctype html
+html
+  head
+    title= title
+    link(rel='stylesheet', href='/stylesheets/style.css')
+  body
+    header
+        div
+            if oauth !== undefined
+                if oauth.results !== undefined
+                    span Hello, #{oauth.results.screen_name}!&nbsp;
+                    a(href="./logout") logout
+                else
+                    span Hello!&nbsp;
+                    a(href="./login") Login
+            else
+                span Hello!&nbsp;
+                a(href="./login") Login
+        div 보안연결 아닙니다. 해킹당해도 책임 안 집니다. 추후에 도입 예정이지만 귀찮아서...
+    block content
