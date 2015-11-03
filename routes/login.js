@@ -3,16 +3,7 @@ var router = express.Router();
 
 // http://codetheory.in/how-to-use-twitter-oauth-with-node-oauth-in-your-node-js-express-application/
 
-var OAuth = require('oauth').OAuth;
-var oauth = new OAuth(
-      "https://api.twitter.com/oauth/request_token",
-      "https://api.twitter.com/oauth/access_token",
-      "your_twitter_consumer_key",
-      "your_twitter_consumer_secret",
-      "1.0A",
-      null,//"http://localhost:3000/login/callback", //null,  // my site callback
-      "HMAC-SHA1"
-);
+var oauth = require('../fn/twtAuth.js');
 
 
 /* GET home page. */
